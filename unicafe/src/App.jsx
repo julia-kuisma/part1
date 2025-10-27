@@ -6,7 +6,7 @@ const Button = (props) => {
 	)
 }
 
-const Display = (props) => {
+const Statistics = (props) => {
 	const sum = props.good + props.neutral + props.bad;
 	return(
 		<>
@@ -33,7 +33,7 @@ const App = () => {
 			<Button onClick={() => setNeutral(neutral + 1)} text="neutral" />
 			<Button onClick={() => setBad(bad + 1)} text="bad" />
 			<h2>Statistics</h2>
-			<Display good={good} neutral={neutral} bad={bad} />
+			<Statistics good={good} neutral={neutral} bad={bad} />
 		</>
 	)
 }

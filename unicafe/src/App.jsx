@@ -7,11 +7,15 @@ const Button = (props) => {
 }
 
 const Display = (props) => {
+	const sum = props.good + props.neutral + props.bad;
 	return(
 		<>
 			<p>good: {props.good}</p>
 			<p>neutral: {props.neutral}</p>
 			<p>bad: {props.bad}</p>
+			<p>all: {sum}</p>
+			<p>avarage: {(props.good - props.bad) / sum}</p>
+			<p>positive: {props.good / sum * 100} %</p>
 		</>
 	)
 }

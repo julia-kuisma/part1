@@ -20,9 +20,13 @@ const App = () => {
 		'The only way to go fast, is to go well.'
 	];
 
+	let max;
+
 	const [votes, setVotes] = useState([0,0,0,0,0,0,0,0]);
 	
-	const [selected, setSelected] = useState(0)
+	const [selected, setSelected] = useState(0);
+
+	const [maxVotes, setMaxvotes] = useState(0);
 
 	function handleRandomNumber() {
 		let random = Math.floor(Math.random() * anecdotes.length);
@@ -33,16 +37,23 @@ const App = () => {
 		let copy = {...votes};
 		copy[selected] += 1;
 		setVotes(copy);
+
+		const values = Object.values(copy);
+		const maxIndex = values.indexOf(Math.max(...values));
+		setMaxvotes(maxIndex);
 	}
 
 	return (
 		<>
+			<h1>Anecdote of the day</h1>
 			<p>
 				{anecdotes[selected]}
 			</p>
 			<p>Votes: {votes[selected]}</p>
 			<Button onClick={handleVoting} text="vote" />
 			<Button onClick={handleRandomNumber} text="Next Anecdote" />
+			<h2>Anecdote with most votes</h2>
+			<p>{anecdotes[maxVotes]}<br/> votes: {votes[maxVotes]}</p>
 		</>
 	)
 }

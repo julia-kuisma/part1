@@ -8,6 +8,11 @@ const Button = (props) => {
 
 const Statistics = (props) => {
 	const sum = props.good + props.neutral + props.bad;
+	if (sum == 0) {
+		return(
+			<p>No feedback given</p>
+		)
+	}
 	return(
 		<>
 			<p>good: {props.good}</p>
